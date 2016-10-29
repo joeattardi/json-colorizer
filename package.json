@@ -2,12 +2,24 @@
   "name": "json-colorizer",
   "version": "1.0.0",
   "description": "A library to format JSON with colors for display in the console",
-  "main": "index.js",
+  "main": "src/lib/index.js",
   "scripts": {
     "test": "mocha src/test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:joeattardi/json-colorizer.git"
+  },
+  "keywords": [
+    "json",
+    "colorize",
+    "console"
+  ],
   "author": "Joe Attardi <joe@attardi.net> (http://www.thinksincode.com)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joeattardi/json-colorizer/issues"
+  },
   "dependencies": {
     "chalk": "^1.1.3"
   },
