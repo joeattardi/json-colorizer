@@ -1,0 +1,18 @@
+{
+  "name": "json-colorizer",
+  "version": "1.0.0",
+  "description": "A library to format JSON with colors for display in the console",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha src/test"
+  },
+  "author": "Joe Attardi <joe@attardi.net> (http://www.thinksincode.com)",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^1.1.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  }
+}
