@@ -1,6 +1,6 @@
 {
   "name": "json-colorizer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library to format JSON with colors for display in the console",
   "main": "src/lib/index.js",
   "scripts": {

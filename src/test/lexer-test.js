@@ -83,4 +83,20 @@ describe('Lexer', function () {
     expect(result).to.deep.equal([{ type: 'NULL', value: 'null' }]);
   });
 
+  it('tokenizes a string literal with brace characters', function () {
+    var result = lexer.getTokens('"{hello}"');
+    expect(result).to.deep.equal([{ type: 'STRING_LITERAL', value: '"{hello}"' }]);
+  });
+
+  it('tokenizes a key-value pair with whitespace between the :', function () {
+    var result = lexer.getTokens('"foo" : "bar"');
+    expect(result).to.deep.equal([
+      { type: 'STRING_KEY', value: '"foo"' },
+      { type: 'WHITESPACE', value: ' ' },
+      { type: 'COLON', value: ':' },
+      { type: 'WHITESPACE', value: ' ' },
+      { type: 'STRING_LITERAL', value: '"bar"' }
+    ]);
+  });
+
 });
