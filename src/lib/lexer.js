@@ -8,7 +8,7 @@ const tokenTypes = [
   { regex: /^"(?:\\.|[^"])*"(?=\s*:)/, tokenType: 'STRING_KEY'},
   { regex: /^"(?:\\.|[^"])*"/, tokenType: 'STRING_LITERAL'},
   { regex: /^true|false/, tokenType: 'BOOLEAN_LITERAL' },
-  { regex: /^null/, tokenType: 'NULL' }
+  { regex: /^null/, tokenType: 'NULL_LITERAL' }
 ];
 
 exports.getTokens = function getTokens(json) {

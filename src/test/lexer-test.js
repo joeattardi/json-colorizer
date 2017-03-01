@@ -80,7 +80,7 @@ describe('Lexer', function () {
 
   it('tokenizes null', function () {
     var result = lexer.getTokens('null');
-    expect(result).to.deep.equal([{ type: 'NULL', value: 'null' }]);
+    expect(result).to.deep.equal([{ type: 'NULL_LITERAL', value: 'null' }]);
   });
 
   it('tokenizes a string literal with brace characters', function () {
