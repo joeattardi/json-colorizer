@@ -1,6 +1,6 @@
 const lexer = require('./lexer');
 const colorizer = require('./colorizer');
 
-module.exports = function colorizeJson(json) {
-  return colorizer.colorize(lexer.getTokens(json));
+module.exports = function colorizeJson(json, options) {
+  return colorizer.colorize(lexer.getTokens(json), options);
 };
