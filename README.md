@@ -19,7 +19,7 @@ If you pass a string to the colorize function, it will treat it as pre-serialize
 
 ```js
 var colorize = require('json-colorizer');
-var json = JSON.stringify({"foo": "bar"}, null, 2)
+var json = JSON.stringify({"foo": "bar"}, null, 2);
 console.log(colorize(json);
 ```
 
@@ -30,7 +30,7 @@ You can specify a function to use for coloring individual tokens by providing a 
 
 ```js
 var colorize = require('json-colorizer');
-var chalk = require('chalk')
+var chalk = require('chalk');
 console.log(colorize({ "foo": "bar" }, {
   colors: {
     STRING_KEY: chalk.green
