@@ -35,7 +35,7 @@ console.log(colorize({ "foo": "bar" }, {
   colors: {
     STRING_KEY: chalk.green
   }
-});
+}));
 ```
 
 The tokens available are:
