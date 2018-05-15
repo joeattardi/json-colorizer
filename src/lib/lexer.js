@@ -5,8 +5,8 @@ const tokenTypes = [
   { regex: /^:/, tokenType: 'COLON' },
   { regex: /^,/, tokenType: 'COMMA' },
   { regex: /^-?\d+(?:\.\d+)?(?:e[+\-]?\d+)?/i, tokenType: 'NUMBER_LITERAL' },
-  { regex: /^"(?:\\.|[^"])*"(?=\s*:)/, tokenType: 'STRING_KEY'},
-  { regex: /^"(?:\\.|[^"])*"/, tokenType: 'STRING_LITERAL'},
+  { regex: /^"(?:\\.|[^"\\])*"(?=\s*:)/, tokenType: 'STRING_KEY'},
+  { regex: /^"(?:\\.|[^"\\])*"/, tokenType: 'STRING_LITERAL'},
   { regex: /^true|false/, tokenType: 'BOOLEAN_LITERAL' },
   { regex: /^null/, tokenType: 'NULL_LITERAL' }
 ];
@@ -15,13 +15,14 @@ exports.getTokens = function getTokens(json) {
   var input = typeof json === 'string' ? json : JSON.stringify(json);
 
   var tokens = [];
-  var foundToken = false;
+  var foundToken;
 
   var match;
   var i;
   var numTokenTypes = tokenTypes.length;
 
   do {
+    foundToken = false;
     for (i = 0; i < numTokenTypes; i++) {
       match = tokenTypes[i].regex.exec(input);
       if (match) {
