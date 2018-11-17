@@ -1,18 +1,17 @@
 const { expect } = require('chai');
-const chalk = require('chalk');
 
 const { getTokens } = require('../lib/lexer');
 const { colorize } = require('../lib/colorizer');
 const customColors = {
-  BRACE: chalk.white,
-  BRACKET: chalk.white,
-  COLON: chalk.white,
-  COMMA: chalk.white,
-  STRING_KEY: chalk.yellow,
-  NULL_LITERAL: chalk.red,
-  STRING_LITERAL: chalk.green,
-  NUMBER_LITERAL: chalk.magenta.bold,
-  BOOLEAN_LITERAL: chalk.cyan
+  BRACE: 'white',
+  BRACKET: 'white',
+  COLON: 'white',
+  COMMA: 'white',
+  STRING_KEY: 'yellow',
+  NULL_LITERAL: 'red',
+  STRING_LITERAL: 'green',
+  NUMBER_LITERAL: 'magenta.bold',
+  BOOLEAN_LITERAL: 'cyan'
 };
 
 const fixture = {
@@ -56,7 +55,7 @@ describe('Colorizer', function () {
 
   it('colorizes with only specific overrides for colors', function () {
     const tokens = getTokens(fixture);
-    const result = colorize(tokens, {colors: {NUMBER_LITERAL: chalk.red}});
+    const result = colorize(tokens, {colors: {NUMBER_LITERAL: 'red'}});
 
     expect(result).to.equal([
       '',

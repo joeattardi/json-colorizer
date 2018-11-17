@@ -26,14 +26,16 @@ console.log(colorize(json);
 
 ## Specifying colors
 
-You can specify a function to use for coloring individual tokens by providing a `colors` object:
+__NOTE__: Prior to version 2.x, the colors were specified by referencing `chalk` color functions directly. This required requiring `chalk` into the file. Starting with version 2.x, the colors are specified as a string which is the name (or property path) to the desired color function.
+
+You can specify a color to use for coloring individual tokens by providing a `colors` object. This should map token types to the names of color functions (see the [chalk styles reference](https://www.npmjs.com/package/chalk#styles)).
 
 ```js
 const colorize = require('json-colorizer');
-const chalk = require('chalk');
 console.log(colorize({ "foo": "bar" }, {
   colors: {
-    STRING_KEY: chalk.green
+    STRING_KEY: 'green',
+    STRING_LITERAL: 'magenta.bold'
   }
 }));
 ```
