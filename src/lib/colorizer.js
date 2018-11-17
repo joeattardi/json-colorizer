@@ -18,7 +18,9 @@ exports.colorize = function colorize(tokens, options) {
   const colors = opts.colors || {};
 
   return tokens.reduce((acc, token) => {
-    const colorFn = get(chalk, colors[token.type] || defaultColors[token.type]);
+    const colorKey = colors[token.type] || defaultColors[token.type];
+    const colorFn = colorKey[0] === '#' ? chalk.hex(colorKey) : get(chalk, colorKey);
+
     return acc + (colorFn ? colorFn(token.value) : token.value);
   }, '');
 };

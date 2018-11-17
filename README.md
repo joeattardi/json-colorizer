@@ -30,12 +30,15 @@ __NOTE__: Prior to version 2.x, the colors were specified by referencing `chalk`
 
 You can specify a color to use for coloring individual tokens by providing a `colors` object. This should map token types to the names of color functions (see the [chalk styles reference](https://www.npmjs.com/package/chalk#styles)).
 
+A color can also be specified as a hex value starting with the `#` symbol.
+
 ```js
 const colorize = require('json-colorizer');
 console.log(colorize({ "foo": "bar" }, {
   colors: {
     STRING_KEY: 'green',
-    STRING_LITERAL: 'magenta.bold'
+    STRING_LITERAL: 'magenta.bold',
+    NUMBER_LITERAL: '#FF0000'
   }
 }));
 ```
