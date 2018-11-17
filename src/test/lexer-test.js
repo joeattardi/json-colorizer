@@ -4,7 +4,7 @@ const { getTokens } = require('../lib/lexer');
 describe('Lexer', () => {
   it('tokenizes a basic JSON object', () => {
     const result = getTokens({
-      foo: 'bar' 
+      foo: 'bar'
     });
 
     expect(result).to.deep.equal([
@@ -14,7 +14,7 @@ describe('Lexer', () => {
       { type: 'STRING_LITERAL', value: '"bar"' },
       { type: 'BRACE', value: '}' }
     ]);
-  }); 
+  });
 
   it('tokenizes a basic JSON string', () => {
     const result = getTokens('{"foo":"bar"}');
@@ -49,7 +49,6 @@ describe('Lexer', () => {
 
     result = getTokens('false');
     expect(result).to.deep.equal([{ type: 'BOOLEAN_LITERAL', value: 'false' }]);
-
   });
 
   it('tokenizes integer values', () => {
@@ -96,5 +95,4 @@ describe('Lexer', () => {
       { type: 'STRING_LITERAL', value: '"bar"' }
     ]);
   });
-
 });
