@@ -1,10 +1,9 @@
-var chai = require('chai');
-var chalk = require('chalk');
-var expect = chai.expect;
+const { expect } = require('chai');
+const chalk = require('chalk');
 
-var lexer = require('../lib/lexer');
-var colorizer = require('../lib/colorizer');
-var customColors = {
+const { getTokens } = require('../lib/lexer');
+const { colorize } = require('../lib/colorizer');
+const customColors = {
   BRACE: chalk.white,
   BRACKET: chalk.white,
   COLON: chalk.white,
@@ -16,7 +15,7 @@ var customColors = {
   BOOLEAN_LITERAL: chalk.cyan
 };
 
-var fixture = {
+const fixture = {
   foo: null,
   bar: {baz: true},
   number: 13,
@@ -26,8 +25,8 @@ var fixture = {
 
 describe('Colorizer', function () {
   it('colorizes with default options', function () {
-    var tokens = lexer.getTokens(fixture);
-    var result = colorizer.colorize(tokens);
+    const tokens = getTokens(fixture);
+    const result = colorize(tokens);
 
     expect(result).to.equal([
       '',
@@ -41,8 +40,8 @@ describe('Colorizer', function () {
   });
 
   it('colorizes with custom colors', function () {
-    var tokens = lexer.getTokens(fixture);
-    var result = colorizer.colorize(tokens, {colors: customColors});
+    const tokens = getTokens(fixture);
+    const result = colorize(tokens, {colors: customColors});
 
     expect(result).to.equal([
       '',
@@ -56,8 +55,8 @@ describe('Colorizer', function () {
   });
 
   it('colorizes with only specific overrides for colors', function () {
-    var tokens = lexer.getTokens(fixture);
-    var result = colorizer.colorize(tokens, {colors: {NUMBER_LITERAL: chalk.red}});
+    const tokens = getTokens(fixture);
+    const result = colorize(tokens, {colors: {NUMBER_LITERAL: chalk.red}});
 
     expect(result).to.equal([
       '',

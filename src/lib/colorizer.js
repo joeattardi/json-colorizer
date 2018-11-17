@@ -1,6 +1,6 @@
-var chalk = require('chalk');
+const chalk = require('chalk');
 
-var defaultColors = {
+const defaultColors = {
   BRACE: chalk.gray,
   BRACKET: chalk.gray,
   COLON: chalk.gray,
@@ -13,12 +13,12 @@ var defaultColors = {
 };
 
 exports.colorize = function colorize(tokens, options) {
-  var opts = options || {};
-  var colors = opts.colors || {};
-  var str = '';
-  var colorFn;
+  const opts = options || {};
+  const colors = opts.colors || {};
+  let str = '';
+  let colorFn;
 
-  tokens.forEach(function (token) {
+  tokens.forEach(token => {
     colorFn = colors[token.type] || defaultColors[token.type];
     str += colorFn ? colorFn(token.value) : token.value;
   });

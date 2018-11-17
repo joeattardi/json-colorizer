@@ -4,7 +4,8 @@
   "description": "A library to format JSON with colors for display in the console",
   "main": "src/lib/index.js",
   "scripts": {
-    "test": "mocha src/test"
+    "test": "mocha src/test",
+    "test:watch": "mocha -w src/test"
   },
   "repository": {
     "type": "git",

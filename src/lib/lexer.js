@@ -12,19 +12,15 @@ const tokenTypes = [
 ];
 
 exports.getTokens = function getTokens(json) {
-  var input = typeof json === 'string' ? json : JSON.stringify(json);
+  let input = typeof json === 'string' ? json : JSON.stringify(json);
 
-  var tokens = [];
-  var foundToken;
-
-  var match;
-  var i;
-  var numTokenTypes = tokenTypes.length;
+  let tokens = [];
+  let foundToken;
 
   do {
     foundToken = false;
-    for (i = 0; i < numTokenTypes; i++) {
-      match = tokenTypes[i].regex.exec(input);
+    for (let i = 0; i < tokenTypes.length; i++) {
+      const match = tokenTypes[i].regex.exec(input);
       if (match) {
         tokens.push({ type: tokenTypes[i].tokenType, value: match[0] });
         input = input.substring(match[0].length);

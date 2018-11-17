@@ -11,15 +11,15 @@ This package is a simple console syntax highlighter for JSON.
 ## Usage
 
 ```js
-var colorize = require('json-colorizer');
+const colorize = require('json-colorizer');
 console.log(colorize({ "foo": "bar" });
 ```
 
 If you pass a string to the colorize function, it will treat it as pre-serialized JSON. This can be used in order to colorize pretty-printed JSON:
 
 ```js
-var colorize = require('json-colorizer');
-var json = JSON.stringify({"foo": "bar"}, null, 2);
+const colorize = require('json-colorizer');
+const json = JSON.stringify({"foo": "bar"}, null, 2);
 console.log(colorize(json);
 ```
 
@@ -29,8 +29,8 @@ console.log(colorize(json);
 You can specify a function to use for coloring individual tokens by providing a `colors` object:
 
 ```js
-var colorize = require('json-colorizer');
-var chalk = require('chalk');
+const colorize = require('json-colorizer');
+const chalk = require('chalk');
 console.log(colorize({ "foo": "bar" }, {
   colors: {
     STRING_KEY: chalk.green

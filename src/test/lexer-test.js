@@ -1,11 +1,9 @@
-var chai = require('chai');
-var expect = chai.expect;
+const { expect } = require('chai');
+const { getTokens } = require('../lib/lexer');
 
-var lexer = require('../lib/lexer');
-
-describe('Lexer', function () {
-  it('tokenizes a basic JSON object', function () {
-    var result = lexer.getTokens({
+describe('Lexer', () => {
+  it('tokenizes a basic JSON object', () => {
+    const result = getTokens({
       foo: 'bar' 
     });
 
@@ -18,8 +16,8 @@ describe('Lexer', function () {
     ]);
   }); 
 
-  it('tokenizes a basic JSON string', function () {
-    var result = lexer.getTokens('{"foo":"bar"}');
+  it('tokenizes a basic JSON string', () => {
+    const result = getTokens('{"foo":"bar"}');
 
     expect(result).to.deep.equal([
       { type: 'BRACE', value: '{' },
@@ -30,8 +28,8 @@ describe('Lexer', function () {
     ]);
   });
 
-  it('includes whitespace', function () {
-    var result = lexer.getTokens('{\n  "foo": "bar"\n}');
+  it('includes whitespace', () => {
+    const result = getTokens('{\n  "foo": "bar"\n}');
 
     expect(result).to.deep.equal([
       { type: 'BRACE', value: '{' },
@@ -45,51 +43,51 @@ describe('Lexer', function () {
     ]);
   });
 
-  it('tokenizes boolean values', function () {
-    var result = lexer.getTokens('true');
+  it('tokenizes boolean values', () => {
+    let result = getTokens('true');
     expect(result).to.deep.equal([{ type: 'BOOLEAN_LITERAL', value: 'true' }]);
 
-    result = lexer.getTokens('false');
+    result = getTokens('false');
     expect(result).to.deep.equal([{ type: 'BOOLEAN_LITERAL', value: 'false' }]);
 
   });
 
-  it('tokenizes integer values', function () {
-    var result = lexer.getTokens('123');
+  it('tokenizes integer values', () => {
+    let result = getTokens('123');
     expect(result).to.deep.equal([{ type: 'NUMBER_LITERAL', value: '123' }]);
 
-    result = lexer.getTokens('-10');
+    result = getTokens('-10');
     expect(result).to.deep.equal([{ type: 'NUMBER_LITERAL', value: '-10' }]);
   });
 
-  it('tokenizes a decimal number', function () {
-    var result = lexer.getTokens('1.234');
+  it('tokenizes a decimal number', () => {
+    const result = getTokens('1.234');
     expect(result).to.deep.equal([{ type: 'NUMBER_LITERAL', value: '1.234' }]);
   });
 
-  it('tokenizes a scientific notation number', function () {
-    var result = lexer.getTokens('12e5');
+  it('tokenizes a scientific notation number', () => {
+    let result = getTokens('12e5');
     expect(result).to.deep.equal([{ type: 'NUMBER_LITERAL', value: '12e5' }]);
 
-    result = lexer.getTokens('12e+5');
+    result = getTokens('12e+5');
     expect(result).to.deep.equal([{ type: 'NUMBER_LITERAL', value: '12e+5' }]);
 
-    result = lexer.getTokens('12E-5');
+    result = getTokens('12E-5');
     expect(result).to.deep.equal([{ type: 'NUMBER_LITERAL', value: '12E-5' }]);
   });
 
-  it('tokenizes null', function () {
-    var result = lexer.getTokens('null');
+  it('tokenizes null', () => {
+    const result = getTokens('null');
     expect(result).to.deep.equal([{ type: 'NULL_LITERAL', value: 'null' }]);
   });
 
-  it('tokenizes a string literal with brace characters', function () {
-    var result = lexer.getTokens('"{hello}"');
+  it('tokenizes a string literal with brace characters', () => {
+    const result = getTokens('"{hello}"');
     expect(result).to.deep.equal([{ type: 'STRING_LITERAL', value: '"{hello}"' }]);
   });
 
-  it('tokenizes a key-value pair with whitespace between the :', function () {
-    var result = lexer.getTokens('"foo" : "bar"');
+  it('tokenizes a key-value pair with whitespace between the :', () => {
+    const result = getTokens('"foo" : "bar"');
     expect(result).to.deep.equal([
       { type: 'STRING_KEY', value: '"foo"' },
       { type: 'WHITESPACE', value: ' ' },
