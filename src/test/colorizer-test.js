@@ -22,6 +22,10 @@ const fixture = {
 };
 
 describe('Colorizer', function() {
+  it('does not throw an error when there is whitespace', function() {
+    expect(() => colorize(getTokens(JSON.stringify(fixture, null, 2)))).to.not.throw();
+  });
+
   it('colorizes with default options', function() {
     const tokens = getTokens(fixture);
     const result = colorize(tokens);

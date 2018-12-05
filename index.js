@@ -1,11 +1,11 @@
 const colorize = require('./src/lib');
+
+const jsonString = JSON.stringify({ foo: 'bar' }, null, 2);
+
 console.log(
-  colorize(
-    { foo: 'bar' },
-    {
-      colors: {
-        STRING_LITERAL: '#FF0000'
-      }
+  colorize(jsonString, {
+    colors: {
+      STRING_LITERAL: '#FF0000'
     }
-  )
+  })
 );

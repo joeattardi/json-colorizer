@@ -19,7 +19,7 @@ exports.colorize = function colorize(tokens, options) {
 
   return tokens.reduce((acc, token) => {
     const colorKey = colors[token.type] || defaultColors[token.type];
-    const colorFn = colorKey[0] === '#' ? chalk.hex(colorKey) : get(chalk, colorKey);
+    const colorFn = colorKey && colorKey[0] === '#' ? chalk.hex(colorKey) : get(chalk, colorKey);
 
     return acc + (colorFn ? colorFn(token.value) : token.value);
   }, '');
