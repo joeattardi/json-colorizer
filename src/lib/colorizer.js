@@ -1,5 +1,5 @@
 const chalk = require('chalk');
-const { get } = require('lodash');
+const get = require('lodash.get');
 
 const defaultColors = {
   BRACE: 'gray',
