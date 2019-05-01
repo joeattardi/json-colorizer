@@ -11,8 +11,15 @@ const tokenTypes = [
   { regex: /^null/, tokenType: 'NULL_LITERAL' }
 ];
 
-exports.getTokens = function getTokens(json) {
-  let input = typeof json === 'string' ? json : JSON.stringify(json);
+exports.getTokens = function getTokens(json, options = {}) {
+  let input;
+
+  if (options.pretty) {
+    const inputObj = typeof json === 'string' ? JSON.parse(json) : json;
+    input = JSON.stringify(inputObj, null, 2);
+  } else {
+    input = typeof json === 'string' ? json : JSON.stringify(json);
+  }
 
   let tokens = [];
   let foundToken;

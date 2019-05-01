@@ -23,12 +23,21 @@ const json = JSON.stringify({"foo": "bar"}, null, 2);
 console.log(colorize(json);
 ```
 
+## Pretty-printing output
+
+To pretty-print the resulting JSON, pass the `pretty: true` option to the options object:
+
+```js
+const colorize = require('json-colorizer');
+const json = '{"foo": "bar"}';
+console.log(colorize(json, { pretty: true }));
+```
 
 ## Specifying colors
 
 __NOTE__: Prior to version 2.x, the colors were specified by referencing `chalk` color functions directly. This required requiring `chalk` into the file. Starting with version 2.x, the colors are specified as a string which is the name (or property path) to the desired color function.
 
-You can specify a color to use for coloring individual tokens by providing a `colors` object. This should map token types to the names of color functions (see the [chalk styles reference](https://www.npmjs.com/package/chalk#styles)).
+You can specify a color to use for coloring individual tokens by providing a `colors` object in the options object. This should map token types to the names of color functions (see the [chalk styles reference](https://www.npmjs.com/package/chalk#styles)).
 
 A color can also be specified as a hex value starting with the `#` symbol.
 

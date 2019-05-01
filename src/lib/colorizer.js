@@ -13,9 +13,8 @@ const defaultColors = {
   NULL_LITERAL: 'white'
 };
 
-exports.colorize = function colorize(tokens, options) {
-  const opts = options || {};
-  const colors = opts.colors || {};
+exports.colorize = function colorize(tokens, options = {}) {
+  const colors = options.colors || {};
 
   return tokens.reduce((acc, token) => {
     const colorKey = colors[token.type] || defaultColors[token.type];
