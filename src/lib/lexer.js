@@ -7,7 +7,7 @@ const tokenTypes = [
   { regex: /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?/i, tokenType: 'NUMBER_LITERAL' },
   { regex: /^"(?:\\.|[^"\\])*"(?=\s*:)/, tokenType: 'STRING_KEY' },
   { regex: /^"(?:\\.|[^"\\])*"/, tokenType: 'STRING_LITERAL' },
-  { regex: /^true|false/, tokenType: 'BOOLEAN_LITERAL' },
+  { regex: /^true|^false/, tokenType: 'BOOLEAN_LITERAL' },
   { regex: /^null/, tokenType: 'NULL_LITERAL' }
 ];
 
