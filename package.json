@@ -3,6 +3,9 @@
   "version": "2.2.0",
   "description": "A library to format JSON with colors for display in the console",
   "main": "src/lib/index.js",
+  "files": [
+    "src/lib"
+  ],
   "scripts": {
     "test": "mocha src/test",
     "test:watch": "mocha -w src/test",
