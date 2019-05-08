@@ -6,6 +6,7 @@
   "files": [
     "src/lib"
   ],
+  "types": "src/lib/index.d.ts",
   "scripts": {
     "test": "mocha src/test",
     "test:watch": "mocha -w src/test",
