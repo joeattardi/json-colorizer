@@ -28,6 +28,18 @@ describe('Lexer', () => {
     ]);
   });
 
+  it('tokenizes an array', () => {
+    const result = getTokens(['foo', 'bar']);
+
+    expect(result).to.deep.equal([
+      { type: 'BRACKET', value: '[' },
+      { type: 'STRING_LITERAL', value: '"foo"' },
+      { type: 'COMMA', value: ',' },
+      { type: 'STRING_LITERAL', value: '"bar"' },
+      { type: 'BRACKET', value: ']' }
+    ]);
+  });
+
   it('includes whitespace', () => {
     const result = getTokens('{\n  "foo": "bar"\n}');
 
@@ -83,6 +95,16 @@ describe('Lexer', () => {
   it('tokenizes a string literal with brace characters', () => {
     const result = getTokens('"{hello}"');
     expect(result).to.deep.equal([{ type: 'STRING_LITERAL', value: '"{hello}"' }]);
+  });
+
+  it('tokenizes a string literal with bracket characters', () => {
+    const result = getTokens('"[hello]"');
+    expect(result).to.deep.equal([{ type: 'STRING_LITERAL', value: '"[hello]"' }]);
+  });
+
+  it('tokenizes a string literal with an escaped quote', () => {
+    const result = getTokens('"a\\"b"');
+    expect(result).to.deep.equal([{ type: 'STRING_LITERAL', value: '"a\\"b"' }]);
   });
 
   it('tokenizes a key-value pair with whitespace between the :', () => {
