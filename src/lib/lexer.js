@@ -35,7 +35,22 @@ exports.getTokens = function getTokens(json, options = {}) {
         break;
       }
     }
-  } while (input.length > 0 && foundToken);
+  } while (_allTokensAnalyzed(input, foundToken));
 
   return tokens;
 };
+
+/**
+ * @author Willian Magalhães Gonçalves
+ * @description Are all tokens analyzed?
+ * @param {*} input - Input
+ * @param {*} foundToken - Found token
+ * @returns {boolean} checkResult - Check result
+ * @private
+ */
+function _allTokensAnalyzed(input, foundToken) {
+  const safeInput = input || {};
+
+  const inputLength = safeInput.length;
+  return inputLength > 0 && foundToken;
+}
