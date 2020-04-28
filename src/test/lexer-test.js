@@ -117,4 +117,10 @@ describe('Lexer', () => {
       { type: 'STRING_LITERAL', value: '"bar"' }
     ]);
   });
+
+  it('given an undefined json when get token should have no results', () => {
+    const result = getTokens(undefined);
+
+    expect(result).to.deep.equal([]);
+  });
 });
