@@ -12,7 +12,7 @@ This package is a simple console syntax highlighter for JSON.
 
 ```js
 const colorize = require('json-colorizer');
-console.log(colorize({ "foo": "bar" });
+console.log(colorize({ "foo": "bar" }));
 ```
 
 If you pass a string to the colorize function, it will treat it as pre-serialized JSON. This can be used in order to colorize pretty-printed JSON:
