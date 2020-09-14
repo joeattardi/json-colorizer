@@ -20,7 +20,7 @@ If you pass a string to the colorize function, it will treat it as pre-serialize
 ```js
 const colorize = require('json-colorizer');
 const json = JSON.stringify({"foo": "bar"}, null, 2);
-console.log(colorize(json);
+console.log(colorize(json));
 ```
 
 ## Pretty-printing output
