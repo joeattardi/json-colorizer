@@ -16,7 +16,7 @@ exports.getTokens = function getTokens(json, options = {}) {
 
   if (options.pretty) {
     const inputObj = typeof json === 'string' ? JSON.parse(json) : json;
-    input = JSON.stringify(inputObj, null, 2);
+    input = JSON.stringify(inputObj, null, typeof options.pretty === 'boolean' ? 2 : options.pretty);
   } else {
     input = typeof json === 'string' ? json : JSON.stringify(json);
   }

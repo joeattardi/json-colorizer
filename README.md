@@ -33,6 +33,14 @@ const json = '{"foo": "bar"}';
 console.log(colorize(json, { pretty: true }));
 ```
 
+When you pass `pretty: true`, tab-size will automatically set to 2. but if you want to specify another tab-size, specify this tab-size instead of `true`.
+
+```js
+const colorize = require('json-colorizer');
+const json = '{"foo": "bar"}';
+console.log(colorize(json, { pretty: 4 }));
+```
+
 ## Specifying colors
 
 __NOTE__: Prior to version 2.x, the colors were specified by referencing `chalk` color functions directly. This required requiring `chalk` into the file. Starting with version 2.x, the colors are specified as a string which is the name (or property path) to the desired color function.

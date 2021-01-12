@@ -5,5 +5,5 @@ console.log(colorize(pkg, {
   colors: {
     STRING_LITERAL: '#FF0000'
   },
-  pretty: true
+  pretty: 2 // pretty: true
 }));

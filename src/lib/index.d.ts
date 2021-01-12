@@ -10,7 +10,7 @@ type Token =
   | 'NULL_LITERAL';
 
 interface Options {
-  readonly pretty?: boolean;
+  readonly pretty?: number | boolean;
   readonly colors?: { readonly [token in Token]?: string };
 }
 
