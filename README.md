@@ -2,7 +2,7 @@
 
 A library for colorizing JSON strings
 
-![](https://raw.githubusercontent.com/joeattardi/json-colorizer/master/screenshot-colorette.png)
+![](https://raw.githubusercontent.com/capaj/json-colorizer/master/screenshot-colorette.png)
 
 This package is a simple console syntax highlighter for JSON.
 
