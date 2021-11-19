@@ -9,36 +9,36 @@ const tokenTypes = [
   { regex: /^"(?:\\.|[^"\\])*"/, tokenType: 'STRING_LITERAL' },
   { regex: /^true|^false/, tokenType: 'BOOLEAN_LITERAL' },
   { regex: /^null/, tokenType: 'NULL_LITERAL' }
-];
+]
 
 exports.getTokens = function getTokens(json, options = {}) {
-  let input;
+  let input
 
   if (options.pretty) {
-    const inputObj = typeof json === 'string' ? JSON.parse(json) : json;
-    input = JSON.stringify(inputObj, null, 2);
+    const inputObj = typeof json === 'string' ? JSON.parse(json) : json
+    input = JSON.stringify(inputObj, null, 2)
   } else {
-    input = typeof json === 'string' ? json : JSON.stringify(json);
+    input = typeof json === 'string' ? json : JSON.stringify(json)
   }
 
-  let tokens = [];
-  let foundToken;
+  let tokens = []
+  let foundToken
 
   do {
-    foundToken = false;
+    foundToken = false
     for (let i = 0; i < tokenTypes.length; i++) {
-      const match = tokenTypes[i].regex.exec(input);
+      const match = tokenTypes[i].regex.exec(input)
       if (match) {
-        tokens.push({ type: tokenTypes[i].tokenType, value: match[0] });
-        input = input.substring(match[0].length);
-        foundToken = true;
-        break;
+        tokens.push({ type: tokenTypes[i].tokenType, value: match[0] })
+        input = input.substring(match[0].length)
+        foundToken = true
+        break
       }
     }
-  } while (_allTokensAnalyzed(input, foundToken));
+  } while (_allTokensAnalyzed(input, foundToken))
 
-  return tokens;
-};
+  return tokens
+}
 
 /**
  * @author Willian Magalhães Gonçalves
@@ -49,8 +49,8 @@ exports.getTokens = function getTokens(json, options = {}) {
  * @private
  */
 function _allTokensAnalyzed(input, foundToken) {
-  const safeInput = input || {};
+  const safeInput = input || {}
 
-  const inputLength = safeInput.length;
-  return inputLength > 0 && foundToken;
+  const inputLength = safeInput.length
+  return inputLength > 0 && foundToken
 }

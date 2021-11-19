@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Colorizer colorizes with custom colors 1`] = `"[37m{[39m[33m\\"foo\\"[39m[37m:[39m[31mnull[39m[37m,[39m[33m\\"bar\\"[39m[37m:[39m[37m{[39m[33m\\"baz\\"[39m[37m:[39m[36mtrue[39m[37m}[39m[37m,[39m[33m\\"number\\"[39m[37m:[39m[95m13[39m[37m,[39m[33m\\"array\\"[39m[37m:[39m[37m[[39m[32m\\"values\\"[39m[37m][39m[37m}[39m"`;
+
+exports[`Colorizer colorizes with default options 1`] = `"[92m{[39m[91m\\"foo\\"[39m[90m:[39m[37mnull[39m[90m,[39m[91m\\"bar\\"[39m[90m:[39m[92m{[39m[91m\\"baz\\"[39m[90m:[39m[36mtrue[39m[92m}[39m[90m,[39m[91m\\"number\\"[39m[90m:[39m[33m13[39m[90m,[39m[91m\\"array\\"[39m[90m:[39m[94m[[39m[92m\\"values\\"[39m[94m][39m[92m}[39m"`;
+
+exports[`Colorizer colorizes with only specific overrides for colors 1`] = `"[92m{[39m[91m\\"foo\\"[39m[90m:[39m[37mnull[39m[90m,[39m[91m\\"bar\\"[39m[90m:[39m[92m{[39m[91m\\"baz\\"[39m[90m:[39m[36mtrue[39m[92m}[39m[90m,[39m[91m\\"number\\"[39m[90m:[39m[31m13[39m[90m,[39m[91m\\"array\\"[39m[90m:[39m[94m[[39m[92m\\"values\\"[39m[94m][39m[92m}[39m"`;
