@@ -23,10 +23,13 @@
     "colorize",
     "console"
   ],
-  "author": "Joe Attardi <jattardi@gmail.com> (http://joeattardi.codes)",
+  "authors": [
+    "Joe Attardi <jattardi@gmail.com> (http://joeattardi.codes)",
+    "Jiri Spac <capajj@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/joeattardi/json-colorizer/issues"
+    "url": "https://github.com/capaj/json-colorizer/issues"
   },
   "dependencies": {
     "colorette": "^2.0.16"
