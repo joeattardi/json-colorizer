@@ -1,5 +1,5 @@
 {
-  "name": "@capaj/json-colorizer",
+  "name": "@pinojs/json-colorizer",
   "version": "3.0.0",
   "description": "A library to format JSON with colors for display in the console",
   "main": "src/lib/index.js",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:joeattardi/json-colorizer.git"
+    "url": "git@github.com:pinojss/json-colorizer.git"
   },
   "keywords": [
     "json",
@@ -29,7 +29,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/capaj/json-colorizer/issues"
+    "url": "https://github.com/pinojs/json-colorizer/issues"
   },
   "dependencies": {
     "colorette": "^2.0.16"
