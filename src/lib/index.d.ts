@@ -14,6 +14,6 @@ interface Options {
   readonly colors?: { readonly [token in Token]?: string };
 }
 
-declare function colorizeJson(json: string, options?: Options): string;
+declare function colorizeJson(json: object | string, options?: Options): string;
 
 export = colorizeJson;
