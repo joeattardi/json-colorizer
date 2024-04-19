@@ -34,7 +34,7 @@ function getJsonString(json: string | object, options: ColorizeOptions) {
   return JSON.stringify(object, null, options.indent ?? defaultOptions.indent);
 }
 
-export function colorize(json: string | object, options: ColorizeOptions) {
+export function colorize(json: string | object, options: ColorizeOptions = {}) {
   const input = getJsonString(json, options);
   const tokens = tokenize(input);
   const theme = options.theme ?? defaultOptions.theme!;
