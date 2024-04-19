@@ -1,18 +1,30 @@
-const tokenTypes = [
-  { regex: /^\s+/, tokenType: 'WHITESPACE' },
-  { regex: /^[{}]/, tokenType: 'BRACE' },
-  { regex: /^[[\]]/, tokenType: 'BRACKET' },
-  { regex: /^:/, tokenType: 'COLON' },
-  { regex: /^,/, tokenType: 'COMMA' },
-  { regex: /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?/i, tokenType: 'NUMBER_LITERAL' },
-  { regex: /^"(?:\\.|[^"\\])*"(?=\s*:)/, tokenType: 'STRING_KEY' },
-  { regex: /^"(?:\\.|[^"\\])*"/, tokenType: 'STRING_LITERAL' },
-  { regex: /^true|^false/, tokenType: 'BOOLEAN_LITERAL' },
-  { regex: /^null/, tokenType: 'NULL_LITERAL' }
+export type TokenType = 'Whitespace' | 'Brace' | 'Bracket' | 'Colon' | 'Comma' | 'NumberLiteral' | 'StringKey' | 'StringLiteral' | 'BooleanLiteral' | 'NullLiteral';
+
+export interface TokenDefinition {
+  regex: RegExp;
+  tokenType: TokenType;
+}
+
+export interface Token {
+  type: TokenType;
+  value: string;
+}
+
+const tokenTypes: TokenDefinition[] = [
+  { regex: /^\s+/, tokenType: 'Whitespace' },
+  { regex: /^[{}]/, tokenType: 'Brace' },
+  { regex: /^[[\]]/, tokenType: 'Bracket' },
+  { regex: /^:/, tokenType: 'Colon' },
+  { regex: /^,/, tokenType: 'Comma' },
+  { regex: /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?/i, tokenType: 'NumberLiteral' },
+  { regex: /^"(?:\\.|[^"\\])*"(?=\s*:)/, tokenType: 'StringKey' },
+  { regex: /^"(?:\\.|[^"\\])*"/, tokenType: 'StringLiteral' },
+  { regex: /^true|^false/, tokenType: 'BooleanLiteral' },
+  { regex: /^null/, tokenType: 'NullLiteral' }
 ];
 
-export const tokenize = (input: string) => {
-  const tokens = [];
+export function tokenize(input: string): Token[] {
+  const tokens: Token[] = [];
   let cursor = 0;
 
   while (cursor < input.length) {

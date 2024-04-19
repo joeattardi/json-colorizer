@@ -28,6 +28,6 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "json-lexer": "^1.2.0"
+    "colorette": "^2.0.20"
   }
 }
