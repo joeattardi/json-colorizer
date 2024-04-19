@@ -11,55 +11,68 @@ This package is a simple console syntax highlighter for JSON.
 ## Usage
 
 ```js
-const colorize = require('json-colorizer');
+const { colorize } = require('json-colorizer');
 console.log(colorize({ "foo": "bar" }));
 ```
 
-If you pass a string to the colorize function, it will treat it as pre-serialized JSON. This can be used in order to colorize pretty-printed JSON:
+You can also pass a JavaScript object to the `colorize` function:
 
 ```js
-const colorize = require('json-colorizer');
-const json = JSON.stringify({"foo": "bar"}, null, 2);
-console.log(colorize(json));
+const { colorize } = require('json-colorizer');
+console.log(colorize({
+  foo: 'bar',
+  baz: 42
+}));
 ```
 
 ## Pretty-printing output
 
-To pretty-print the resulting JSON, pass the `pretty: true` option to the options object:
+By default, the output JSON will be pretty-printed with an indentation of 2 spaces. You can adjust this by passing the `indent` option.
 
 ```js
-const colorize = require('json-colorizer');
-const json = '{"foo": "bar"}';
-console.log(colorize(json, { pretty: true }));
+const { colorize } = require('json-colorizer');
+console.log(colorize({
+  foo: 'bar',
+  baz: 42
+}, { indent: 4 }));
 ```
 
-## Specifying colors
+## Customizing the colors
 
-__NOTE__: Prior to version 2.x, the colors were specified by referencing `chalk` color functions directly. This required requiring `chalk` into the file. Starting with version 2.x, the colors are specified as a string which is the name (or property path) to the desired color function.
-
-You can specify a color to use for coloring individual tokens by providing a `colors` object in the options object. This should map token types to the names of color functions (see the [chalk styles reference](https://www.npmjs.com/package/chalk#styles)).
-
-A color can also be specified as a hex value starting with the `#` symbol.
+You can override any of the colors used for token types by providing a `colors` option. This should map token types to the names of color functions. These color functions are contained in the `color` object exported by the library.
 
 ```js
-const colorize = require('json-colorizer');
-console.log(colorize({ "foo": "bar" }, {
+const { colorize, color } = require('json-colorizer');
+
+console.log(colorize({ foo: 'bar' }, {
   colors: {
-    STRING_KEY: 'green',
-    STRING_LITERAL: 'magenta.bold',
-    NUMBER_LITERAL: '#FF0000'
+    StringLiteral: color.red
   }
 }));
 ```
 
-The tokens available are:
+The list of valid token types and color functions are listed below.
 
-* `BRACE`
-* `BRACKET`
-* `COLON`
-* `COMMA`
-* `STRING_KEY`
-* `STRING_LITERAL`
-* `NUMBER_LITERAL`
-* `BOOLEAN_LITERAL`
-* `NULL_LITERAL`
+### Token types
+
+- `Brace`: curly braces (`{`, `}`)
+- `Bracket`: square brackets (`[`, `]`)
+- `Colon`: colon character (`:`)
+- `Comma`: comma character (`,`)
+- `StringKey`: the key in a key/value pair
+- `NumberLiteral`: a number value
+- `StringLiteral`: a string value
+- `BooleanLiteral`: a boolean literal (`true`, `false`)
+- `NullLiteral`: the literal `null` value
+
+### Color functions in the `color` object
+
+- `black`
+- `red`
+- `green`
+- `yellow`
+- `blue`
+- `magenta`
+- `cyan`
+- `white`
+- `gray`

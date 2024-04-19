@@ -1,14 +1,24 @@
-export type TokenType = 'Whitespace' | 'Brace' | 'Bracket' | 'Colon' | 'Comma' | 'NumberLiteral' | 'StringKey' | 'StringLiteral' | 'BooleanLiteral' | 'NullLiteral';
+export type TokenType = 
+  | 'Whitespace' 
+  | 'Brace' 
+  | 'Bracket' 
+  | 'Colon' 
+  | 'Comma' 
+  | 'NumberLiteral' 
+  | 'StringKey' 
+  | 'StringLiteral' 
+  | 'BooleanLiteral' 
+  | 'NullLiteral';
 
-export interface TokenDefinition {
+export type TokenDefinition = {
   regex: RegExp;
   tokenType: TokenType;
-}
+};
 
-export interface Token {
+export type Token = {
   type: TokenType;
   value: string;
-}
+};
 
 const tokenTypes: TokenDefinition[] = [
   { regex: /^\s+/, tokenType: 'Whitespace' },

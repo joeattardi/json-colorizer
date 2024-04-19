@@ -20,12 +20,12 @@ const defaultTheme: ColorTheme = {
 }
 
 export type ColorizeOptions = {
-  theme?: ColorTheme;
+  colors?: ColorTheme;
   indent?: number;
 }
 
 const defaultOptions: ColorizeOptions = {
-  theme: defaultTheme,
+  colors: defaultTheme,
   indent: 2
 };
 
@@ -37,7 +37,11 @@ function getJsonString(json: string | object, options: ColorizeOptions) {
 export function colorize(json: string | object, options: ColorizeOptions = {}) {
   const input = getJsonString(json, options);
   const tokens = tokenize(input);
-  const theme = options.theme ?? defaultOptions.theme!;
+
+  const theme = {
+    ...defaultOptions.colors!,
+    ...options.colors
+  };
 
   return tokens.reduce((output, token) => output + theme[token.type](token.value), '');
 }
