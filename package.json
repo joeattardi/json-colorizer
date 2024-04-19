@@ -2,16 +2,13 @@
   "name": "json-colorizer",
   "version": "3.0.0",
   "description": "A library to format JSON with colors for display in the console",
-  "main": "src/lib/index.js",
+  "main": "dist/index.js",
   "files": [
     "src/lib"
   ],
-  "types": "src/lib/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "mocha src/test",
-    "test:watch": "mocha -w src/test",
-    "prettify": "prettier --write src/**/*.js",
-    "lint": "eslint src"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -26,5 +23,11 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/joeattardi/json-colorizer/issues"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "json-lexer": "^1.2.0"
   }
 }
