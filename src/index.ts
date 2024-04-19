@@ -1,9 +1,12 @@
 import { tokenize, TokenType } from './lexer';
 import * as colorette from 'colorette';
+import { Color } from 'colorette';
 
-type ColorMappings = Record<TokenType, colorette.Color>;
+export { colorette as color };
 
-const colors: ColorMappings = {
+export type ColorTheme = Record<TokenType, Color>;
+
+const defaultTheme: ColorTheme = {
   Whitespace: colorette.gray,
   Brace: colorette.gray,
   Bracket: colorette.gray,
@@ -16,17 +19,26 @@ const colors: ColorMappings = {
   NullLiteral: colorette.white  
 }
 
-export function colorize(json: string | object) {
-  const input = typeof json === 'string' ? json : JSON.stringify(json, null, 2);
-
-  const tokens = tokenize(input);
-
-  let output = '';
-
-  tokens.forEach(token => {
-    const color = colors[token.type];
-    output += color(token.value);
-  });
-
-  return output;
+export type ColorizeOptions = {
+  theme?: ColorTheme;
+  indent?: number;
 }
+
+const defaultOptions: ColorizeOptions = {
+  theme: defaultTheme,
+  indent: 2
+};
+
+function getJsonString(json: string | object, options: ColorizeOptions) {
+  const object = typeof json === 'string' ? JSON.parse(json) : json;
+  return JSON.stringify(object, null, options.indent ?? defaultOptions.indent);
+}
+
+export function colorize(json: string | object, options: ColorizeOptions) {
+  const input = getJsonString(json, options);
+  const tokens = tokenize(input);
+  const theme = options.theme ?? defaultOptions.theme!;
+
+  return tokens.reduce((output, token) => output + theme[token.type](token.value), '');
+}
+
