@@ -4,7 +4,7 @@
   "description": "A library to format JSON with colors for display in the console",
   "main": "dist/index.js",
   "files": [
-    "src/lib"
+    "dist"
   ],
   "types": "dist/index.d.ts",
   "scripts": {
