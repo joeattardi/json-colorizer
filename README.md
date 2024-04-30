@@ -1,4 +1,7 @@
-# json-colorizer
+# JSON Colorizer
+
+![Logo](logo.png)
+
 A library for colorizing JSON strings
 
 ![](https://raw.githubusercontent.com/joeattardi/json-colorizer/master/screenshot.png)
